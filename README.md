@@ -44,13 +44,24 @@ Python is an object oriented programming language.
 Almost everything in Python is an object, with its properties and methods.
 A Class is like an object constructor, or a "blueprint" for creating objects.
 > Create a Class
+>> Keyword is class:
+>>> class Geeting():
+>>>   print('hello world')
+
 > Create Object
+
 > The __init__() Function
+
 > Object Methods
+
 > The self Parameter
+
 > Modify Object Properies
+
 > Delete Object Properties
+
 > Delete Object
+
 > The pass Statement
 
 
