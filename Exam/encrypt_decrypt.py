@@ -1,9 +1,4 @@
 
-# st = "hello world"
-# encode = ''
-# for i in st:
-#     encode_b = 
-
 def encrypt():
     plainText = input("What is your plaintext? ")
     shift = int(input("What is your shift? "))
