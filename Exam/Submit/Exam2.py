@@ -27,7 +27,7 @@ def encrypt():
 
 def decrypt():
     import string         
-    encryption = (input("Enter in your encryted code")).lower()
+    encryption = (input("Enter in your encryted code!: ")).lower()
     shift_encrypt = (input("What is your encryption shift? ")).lower()
 
     dictText = {}
@@ -57,7 +57,7 @@ def decrypt():
 from tkinter import*
 option = Tk()
 option.title = ("Option")
-option.geometry("300x300")
+option.geometry("200x200")
 
 myLaber1 = Label(option, text="Hello Guys, How are you today!")
 myLaber1.pack()

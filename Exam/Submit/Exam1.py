@@ -14,65 +14,69 @@ def CreateCellCaro(n):
     return lstCaro
 
 def checkWin(lst,persign):
-    # a: the number of caro cells
+    # a: nxn
     a = lst
-    for x in range(6):
-        check = 0
+    for x in range(len(a)):
         for y in range(len(a)):
             #check row
             count = 0
             i, j = x, y
-            if count < 5:
-                while (j < len(a) and a[i][j] == persign):
-                    count += 1
-                    j += 1 # kiem tra phia truoc
-                    if count >= 5:
-                        break
-                    # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
-                    # j - 5 < 0 sẽ bị đảo list 
-                    try:
-                        if (j - 5 >= 0 and count == 4 and a[i][j] == a[i][j-5] == 0):
-                            count += 2 # out = 6 => thì bên ngoài sẽ đúng luôn
-                            break
-                    except:
-                        pass   
+            while (j < len(a) and a[i][j] == persign):
+                count += 1
+                j += 1 # kiem tra phia truoc
+
+                # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
+                # j - 5 < 0 sẽ bị đảo list 
+                try:
+                    if count == 4 and a[i][j] == a[i][j-5] == 0:
+                        return True
+                except:
+                    pass
+                if count >= 5:
+                    return True
+
             j = y
-            if count < 5:
-                while (j -1 >= 0 and a[i][j-1] == persign):
-                    count += 1
-                    j -= 1 # kiểm tra vị trí sau lưng
-                    if count >= 5:
-                        break
-            if count >= 5:
-                check +=count
-                return True
+            while (j -1 >= 0 and a[i][j-1] == persign):
+                count += 1
+                j -= 1 # kiểm tra vị trí sau lưng
+                if count >= 5:
+                    return True
+
 
             #check column
             count = 0
             i, j = x, y
-            if count < 5:
-                while (i < len(a) and a[i][j] == persign):
-                    count += 1
-                    i += 1
-                    # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
-                    try:
-                        if (i - 5 >= 0 and count == 4 and a[i][j] == a[i-5][j] == 0):
-                            count += 2 #= 6 => thì bên ngoài sẽ đúng luôn
-                            break
-                    except:
-                        pass
-                    if count >= 5:
-                        break
+            while (i < len(a) and a[i][j] == persign):
+                count += 1
+                i += 1
+                # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
+                try:
+                    if count == 4 and a[i][j] == a[i-5][j] == 0:
+                        return True
+                except:
+                    pass
+                if count >= 5:
+                    return True
             i = x
-            if count < 5:
-                while (i-1 >= 0 and a[i-1][j] == persign):
-                    count += 1
-                    i -= 1
-                    if count >= 5:
-                        break
-            if count >= 5:
-                check +=count
-                return True
+            # check column i-1, j phía bên trên
+            while (i-1 >= 0 and a[i-1][j] == persign):
+                count += 1
+                i -= 1
+                if count >= 5:
+                    return True
+            # check column i+1, j phía bên dưới
+            i, j = x, y
+            count = 0
+            while (i < (len(a)-1) and a[i+1][j] == persign):
+                count += 1
+                i += 1
+                if count >= 5:
+                    return True
+                try:
+                    if count == 4 and a[i+1][j] == a[i-4][j] == 0:
+                        return True
+                except:
+                    pass
 
             #check cheo phai
             count = 0
@@ -83,65 +87,65 @@ def checkWin(lst,persign):
                 j += 1
                 # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
                 try:
-                    if (j - 1 >= 0 and i - 1 >= 0 and count == 4 and a[i][j] == a[i+1][j-1] == 0):
-                        count += 2
-                        break
+                    if count == 4 and a[i][j] == a[i+1][j-1] == 0:
+                        return True
                 except:
                     pass
                 if count >= 5:
-                    break
-            i, j = x, y
+                    return True
+            if count >= 5:
+                return True
 
-            while(0 <= i - 1 and i + 1 < len(a) and j - 1 >= 0 and a[i+1][j-1]) == persign: # phia duoi
+            i, j = x, y
+            while(i + 1 < len(a) and j - 1 >= 0 and a[i+1][j-1]) == persign: # phia duoi
                 count += 1
                 i += 1
                 j -= 1
-                #print("i = ", i, "j =" , j, "count",count -1)
+                try:
+                    if count == 4 and a[i+1][j-1] == a[i-4][j+4] == 0:
+                        return True
+                except:
+                    pass
                 if count >= 5:
-                    break
-            if count >= 5:
-                check +=count
-                return True
+                    return True
 
             # check cheo trai
             count = 0
             i, j = x, y
-            while (i <len(a) and j < len(a) and a[i][j]) == persign: #phia duoi
-                count += 1
-                i += 1
-                j += 1
-                # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
-                try:
-                    if (i - 1 >= 0 and j -1 >= 0 and count == 4 and a[i][j] == a[i-1][j-1] == 0):
-                        count += 2
-                        break
-                except:
-                    pass
-                if count >= 5:
-                    break
-            i, j = x, y
-            while (i-1 >= 0 and j-1 >= 0 and a[i-1][j-1]) == persign: #phia tren
+            while (i-1 >= 0 and j-1 >= 0 and a[i][j]) == persign: #phia tren
                 count += 1
                 i -= 1
                 j -= 1
+                # nếu 4 số 1 liên tiếp, 2 đầu là 0 thì thắng
+                try:
+                    if count == 4 and a[i][j] == a[i+5][j+5] == 0:
+                        return True
+                except:
+                    pass
                 if count >= 5:
-                    break
-            if count >= 5:
-                check +=count
-                return True
-        if check >= 5:
-            break
+                    return True
 
+            i, j = x, y
+            while (i <(len(a)-1) and j < (len(a)-1) and a[i+1][j+1]) == persign: #phia duoi
+                count += 1
+                i += 1
+                j += 1
+                #print(i,j)
+                try:
+                    if count == 4 and a[i+1][j+1] == a[i-4][j-4] == 0:
+                        return True
+                except:
+                    pass
+                if count >= 5:
+                    return True
 
-
-# a = [[1,2,0,0,0,0,2],
-#      [0,0,1,1,1,0,2],
-#      [1,2,1,1,0,0,2],
-#      [1,2,0,0,0,0,2],
-#      [0,2,0,0,1,0,2],
-#      [0,1,1,1,1,1,2],
-#      [0,1,0,0,1,0,2]]
-
+# a = [[0,1,0,0,1,0,1],
+#      [1,1,2,1,0,1,0],
+#      [0,1,1,2,1,0,0],
+#      [1,0,1,0,2,1,0],
+#      [1,1,0,2,0,2,1],
+#      [0,1,2,2,2,2,0],
+#      [0,0,0,2,2,0,1]]
 
 n = int(input("Enter the number of item: "))
 while n < 5:
