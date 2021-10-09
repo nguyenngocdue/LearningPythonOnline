@@ -64,26 +64,25 @@ Python has been an object-oriented language since it existed. Because of this, c
 > >   #Create a Parent Class
 > >   #Create a class named Person, with firstname and lastname properties, and a printname method:
 > >   class Person:
-> >     def __init__(self, fname, lname):
-> >       self.firstname = fname
-> >       self.lastname = lname
-> >    
-> >     def printname(self):
-> >       print(self.firstname, self.lastname)
+> >       def __init__(self, fname, lname):
+> >           self.firstname = fname
+> >           self.lastname = lname
+> >          def printname(self):
+> >       	print(self.firstname, self.lastname)
 > >    #Use the Person class to create an object, and then execute the printname method:
 > >   x = Person("John", "Doe")
 > >   x.printname()
-> >    
-> >   #Create a Child Class
+> >   
+> >      #Create a Child Class
 > >   #Create a class named Student, which will inherit the properties and methods from the Person class:
 > >   class Student(Person):
-> >     pass
+> >       pass
 > >   x = Student("Mike", "Olsen")
 > >   x.printname()
-> >    
-> >   #OUT = Mike Olse
-> >    
-> >   ```
+> >   
+> >      #OUT = Mike Olse
+> >   
+> >      ```
 >
 > **Instance:**
 >
@@ -99,7 +98,7 @@ Python has been an object-oriented language since it existed. Because of this, c
 >
 > > + A special kind of function that is defined in a class definition.
 > >
-> >   ![](C:\Users\admin\OneDrive\05_Learning Python Online\LearningPythonOnline\Lesson\Lesson09\image\instancemethod.png)
+> >   ![](C:\Users\admin\OneDrive\05_Learning Python Online\LearningPythonOnline\Lesson\document\image\instancemethod.png)
 > >
 > >   
 >
@@ -115,7 +114,57 @@ Python has been an object-oriented language since it existed. Because of this, c
 > >
 > >   We can change the way operations work for user-defined types like objects and structures. This is known as ***operator overloading***.
 >
-> 
+> **Constructor**:
+>
+> > + is a special type of subroutine called to create an object.
+> >
+> > + Preparing the new object for use, often accepting arguments that constructor uses to set required member variables.
+> >
+> > + A constructor resembles an instance method, but it has no explicit return type, it is implicitly inherited and it usually has different rules for scope modifilers. 
+> >
+> >   ```C#
+> >   public class MyClass
+> >   {
+> >       private int a;
+> >       private string b;
+> >   
+> >       // Constructor
+> >       public MyClass() : this(42, "string")
+> >       {
+> >       }
+> >   
+> >       // Overloading a constructor
+> >       public MyClass(int a, string b)
+> >       {
+> >           this.a = a;
+> >           this.b = b;
+> >       }
+> >   }
+> >   ```
+> >
+> >   
+>
+> **Member variable:**
+>
+> >+ member variable (sometimes called a member field) is a variable that is associated with a specific object, and accessible for all its methods (member functions).
+> >
+> >```c++
+> >class Foo {
+> >    int bar; // Member variable
+> >  public:
+> >    void setBar(const int newBar) { 
+> >      bar = newBar;
+> >    }
+> >};
+> >
+> >int main () {
+> >  Foo rect; // Local variable
+> >
+> >  return 0;
+> >}
+> >```
+> >
+> >
 
 ---
 
@@ -127,7 +176,7 @@ The class statement creates a new class definition. > Keyword : "class' followed
 
 ```python
 class ClassName:
-   'Optional class documentation string'
+   #'Optional class documentation string'
    class_suite
 ```
 
@@ -140,52 +189,53 @@ class ClassName:
 >**______init__()** 
 >
 >> + is a special method, which is called class constructor or initialization method.
->>
+>
 >> + is called automatically every time the class is being used to create a new object.
->>
+>
 >>   ```python
 >>   #constructor synonym with initialization
 >>   class Animal():
 >>   def __init__(self):
->>      pass
+>>        pass
 >>   ```
->>
+>
 >>   ```python
 >>   Example:
 >>   #Create a class named Animal, use the __init__() function to assign values for name and shout:
 >>   class Animal:
 >>   def __init__(self, name, shout):
->>     self.name = name
->>     self.shout = shout
+>>        self.name = name
+>>        self.shout = shout
 >>   def greeting(self, para):
 >>     	return "Hello guys! My name is " + self.name + para
->>   
+>
 >>   animal1 = Animal('dog', 'gaugau') #-> this is called an instance or object which will occur for Class self -> animal1 , name -> dog, shout -> gaugau 
->>   
+>
 >>   print(animal1.name)
 >>   print(animal1.shout)
 >>   print(animal1.gretting(" Pug"))
->>   ```
 >>
+>>   ```
+>
 >>   ```python
 >>   dog
 >>   gaugau
 >>   Hello guys! My name is dog Pug
 >>   ```
->>
->>   
+>
+>
 >
 >**self**
 >
 >> + it represents the instance of the class.
 >> + By using the 'self' key word --> can access the attributes and methods of the class. (It binds the attributes with the given argument).
 >> + It does not have to be named self, you can call it whatever you like, but it has to be the first parameter of any function in the class.
->>
+>
 >> ***What reason do you need to use self?***
->>
+>
 >> + Python does not use the @syntax to refer to instance attributes.
 >> + Python decided to do methods in a way that makes the instance to which the method belongs be passed automatically, but not received automatically. 
->>
+>
 >> > > ***Self is always pointing to Current Object.***
 >> >
 >> > ```python
@@ -208,13 +258,13 @@ class ClassName:
 >> > ```python
 >> > class car():
 >> >  #init method or constructor
->> >  def init(self, model, color):
->> >      self.model = model
->> >      self.color = color
+>> > 	def init(self, model, color):
+>> >         self.model = model
+>> >         self.color = color
 >> > 
 >> > 	def show(self):
->> >      print("Model is", self.model )
->> >      print("color is", self.color )
+>> >     	print("Model is", self.model )
+>> >      	print("color is", self.color )
 >> > 
 >> > #both objects have different self which
 >> > #contain their attributes
@@ -297,12 +347,11 @@ Example:
 ```python
 #Insert a function that prints a greeting, and execute it on the p1 object:
 class Animal:
-  def __init__(self, name, food):
-    self.name = name
-    self.food = food
-
-  def myfunc(self):
-    print("Hello my name is " + self.name)
+    def __init__(self, name, food):
+    	self.name = name
+    	self.food = food
+    def myfunc(self):
+    	print("Hello my name is " + self.name)
 
 p1 = Person("Dog", 36)
 p1.myfunc()
