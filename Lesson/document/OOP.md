@@ -60,7 +60,7 @@
 > >
 > > We can see that variables can't see as its private and methods are visible as its public. So binding of these variables and methods into class (entity) is called as Encapsulation. 
 > >
-> > ***Advantages of Encaosulation:***
+> > ***Advantages of Encapsulation:***
 > >
 > > * Achieve Security.
 > > * Enhancement become very easy.
@@ -287,7 +287,7 @@
 > > >   ```python
 > > >    Python program to demonstrate
 > > >   # hybrid inheritance
-> > >      
+> > >        
 > > >   class School:
 > > >        def func1(self):
 > > >           print("This function is in school.")
@@ -483,5 +483,12 @@
 > >
 > >  
 >
-> 
+> ---
+>
+> Reference link:
+>
+> 1. https://www.programiz.com/python-programming/polymorphism
+> 2. https://pediaa.com/category/technology/it/programming/
+> 3. https://www.thecodingshala.com/2019/07/java-inheritance-coding-shala.html
+> 4. https://www.geeksforgeeks.org/types-of-inheritance-python/
 
